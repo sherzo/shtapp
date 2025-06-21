@@ -24,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
         "unit_of_measure",
         "selling_price_usd",
         "category",
+        "low_stock_threshold",
         "is_active",
         "created_at",
         "updated_at",
@@ -35,11 +36,12 @@ class ProductAdmin(admin.ModelAdmin):
         "is_active",
         "category",
         "unit_of_measure",
+        "low_stock_threshold",
         "created_at",
         "updated_at",
     )
 
-    list_editable = ("stock", "selling_price_usd", "is_active")
+    list_editable = ("stock", "selling_price_usd", "is_active", "low_stock_threshold")
 
     list_display_links = ("name", "sku")
 
@@ -48,7 +50,13 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             None,
-            {"fields": (("name", "sku"), "description", ("stock", "unit_of_measure"))},
+            {
+                "fields": (
+                    ("name", "sku"),
+                    "description",
+                    ("stock", "unit_of_measure", "low_stock_threshold"),
+                )
+            },
         ),
         (
             "Información de Precios",

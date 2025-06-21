@@ -57,6 +57,11 @@ class Product(models.Model):
         related_name="products",
         verbose_name="Categoría",
     )
+    low_stock_threshold = models.IntegerField(
+        default=0,
+        verbose_name="Umbral de Stock Bajo",
+        help_text="Nivel de stock en el que el producto se considera 'bajo'.",
+    )
     is_active = models.BooleanField(default=True, verbose_name="Activo")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
