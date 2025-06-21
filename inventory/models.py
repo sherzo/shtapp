@@ -47,7 +47,10 @@ class Product(models.Model):
         max_digits=10, decimal_places=2, verbose_name="Precio de Venta (USD)"
     )
     purchase_price_usd = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name="Precio de Compra (USD)"
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        verbose_name="Precio de Compra (USD)",
     )
     category = models.ForeignKey(
         Category,
